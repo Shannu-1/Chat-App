@@ -10,7 +10,6 @@ function App() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [joined, setJoined] = useState(false);
-  // ...existing code...
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -26,13 +25,11 @@ function App() {
       setMessages((prev) => [...prev, { system: true, text: `${data} left the chat` }]);
     });
 
-  // ...existing code...
 
     return () => {
       socket.off("receive_message");
       socket.off("user_joined");
       socket.off("user_left");
-  // ...existing code...
     };
   }, [username]);
 
@@ -54,7 +51,6 @@ function App() {
   setMessage("");
   };
 
-  // ...existing code...
 
   const leaveChat = () => {
     if (window.confirm("Are you sure you want to leave the chat?")) {
@@ -62,7 +58,6 @@ function App() {
       setJoined(false);
       setUsername("");
       setMessages([]);
-      // Do NOT clear users here; let backend send update_users event
     }
   };
 
